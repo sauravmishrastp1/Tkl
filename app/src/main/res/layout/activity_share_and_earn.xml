@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:background="#fff"
+                android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="48dp"
+            app:cardBackgroundColor="@color/appcolor"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+            <ImageView
+                    android:id="@+id/backbtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_arrow_back_black_24dp" tools:ignore="RtlHardcoded,VectorDrawableCompat"/>
+
+
+
+            <TextView
+                    android:id="@+id/titlletv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/maven_pro"
+                    android:textStyle="bold"
+                    android:text="Back"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="26dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"/>
+
+        </LinearLayout>
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_gravity="end"
+                   android:foregroundGravity="center"
+                   android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
+    <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/referimg"
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/refer_earn"
+            android:layout_height="200dp" />
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/layout"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:layout_below="@id/referimg"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="wrap_content"
+                android:text="You'll earn Rs.100"
+                android:fontFamily="@font/maven_pro"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/maven_pro"
+                android:text="When you refer your friends"
+                android:layout_height="wrap_content" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:text="Your Referal Code"
+                android:fontFamily="@font/maven_pro"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content" />
+        <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_gravity="center"
+                android:background="@drawable/dotedrectangel"
+                android:layout_height="wrap_content">
+            <Button
+                    android:layout_width="match_parent"
+                    android:id="@+id/refercode"
+                    android:background="#D6D5D5"
+                    android:layout_margin="1dp"
+                    android:fontFamily="@font/maven_pro"
+                    android:text="AB1238"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:layout_height="35dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <Button
+            android:layout_width="match_parent"
+            android:id="@+id/sharenowww"
+            android:background="@drawable/button_background"
+            android:text="Share Now"
+            android:layout_below="@+id/layout"
+            android:clickable="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30sp"
+            android:textColor="@color/white"
+            android:layout_height="40dp"
+            android:layout_marginRight="30sp"
+            android:layout_marginLeft="30dp"/>
+
+</RelativeLayout>

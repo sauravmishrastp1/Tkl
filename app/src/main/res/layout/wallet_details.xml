@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="15dp"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/layput"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:text="My Blance"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/Black"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp">
+
+            </TextView>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:text="₹500"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/Black"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true">
+
+            </TextView>
+        </RelativeLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/layput"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
+            <ImageView
+                    android:layout_width="50dp"
+                    android:src="@drawable/user_wallert_"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="50dp">
+
+            </ImageView>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Add Money"
+                    android:textColor="@color/Black"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textSize="14dp"
+                    android:layout_height="wrap_content">
+
+            </TextView>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
+            <ImageView
+                    android:layout_width="50dp"
+                    android:src="@drawable/user_send_money_"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="50dp">
+
+            </ImageView>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Send Money"
+                    android:textColor="@color/Black"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textSize="14dp"
+                    android:layout_height="wrap_content">
+
+            </TextView>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
+            <ImageView
+                    android:layout_width="50dp"
+                    android:src="@drawable/add_money"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="50dp">
+
+            </ImageView>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Add New"
+                    android:textColor="@color/Black"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textSize="14dp"
+                    android:layout_height="wrap_content">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

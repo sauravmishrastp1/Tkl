@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:background="@color/appcolor"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.LoginActivity">
+    <ImageView
+            android:layout_width="200sp"
+            android:id="@+id/img_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20sp"
+            android:src="@drawable/tkl_logo"
+            android:layout_height="100dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/layout"
+            android:layout_below="@id/img_logo"
+            android:layout_height="wrap_content">
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:hint="User name"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/username_et"
+                    android:layout_marginStart="30sp"
+                    android:layout_marginEnd="30sp"
+                    android:textColorHint="@color/white"
+                    android:drawableStart="@drawable/user7"
+                    android:drawablePadding="9sp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content" tools:ignore="HardcodedText,UnusedAttribute"
+                    android:drawableLeft="@drawable/user_img"/>
+
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:hint="Email"
+                    android:id="@+id/email_et"
+                    android:textSize="15sp"
+
+                    android:layout_marginStart="30sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="30sp"
+                    android:textColorHint="@color/white"
+                    android:drawableStart="@drawable/emailregister"
+                    android:drawablePadding="9sp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content" tools:ignore="HardcodedText,UnusedAttribute"
+                    android:drawableLeft="@drawable/user_img"/>
+
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:hint="Phone"
+                    android:layout_marginStart="30sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="30sp"
+                    android:inputType="number"
+                    android:textSize="15sp"
+                    android:id="@+id/phone_et"
+                    android:textColorHint="@color/white"
+                    android:drawableStart="@drawable/call_register"
+                    android:drawablePadding="9sp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content" tools:ignore="HardcodedText,UnusedAttribute"
+                    android:drawableLeft="@drawable/user_img"/>
+
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:hint="Password"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
+                    android:inputType="textPassword"
+                    android:id="@+id/password_et"
+                    android:textColorHint="@color/white"
+                    android:drawableStart="@drawable/password8"
+                    android:drawablePadding="9sp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginStart="30sp"
+                    android:layout_marginEnd="30sp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content" tools:ignore="HardcodedText,UnusedAttribute"
+                    android:drawableLeft="@drawable/user_img"/>
+
+
+        <TextView android:layout_width="wrap_content"
+                  android:text="@string/forget_password"
+                  android:layout_gravity="center"
+                  android:textColor="@color/white"
+                  android:visibility="gone"
+                  android:fontFamily="@font/maven_pro"
+                  android:layout_marginTop="10dp"
+                  android:layout_height="wrap_content" tools:ignore="UnusedAttribute"/>
+        <ImageView android:layout_width="50dp"
+                   android:id="@+id/login_button"
+                   android:layout_gravity="center"
+                   android:src="@drawable/loginbtn_img"
+                   android:layout_marginTop="20dp"
+                   android:layout_height="50dp"/>
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_below="@id/login_button"
+                  android:orientation="vertical"
+                  android:background="@drawable/m"
+                  android:layout_alignParentBottom="true"
+                  android:layout_height="250sp" tools:ignore="NotSibling">
+        <LinearLayout android:layout_width="wrap_content"
+                      android:id="@+id/register_layout"
+                      android:orientation="horizontal"
+                      android:layout_marginTop="170dp"
+                      android:layout_gravity="center"
+                      android:layout_height="wrap_content">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_gravity="center"
+                      android:textColor="@color/Black"
+                      android:fontFamily="@font/quicksand_bold"
+                      android:text="@string/alreday"
+                      android:layout_height="wrap_content"
+                      android:textStyle="bold"
+                      tools:ignore="HardcodedText,UnusedAttribute"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_gravity="center"
+                      android:fontFamily="@font/quicksand_bold"
+                      android:text="@string/sign_in"
+                      android:textStyle="bold"
+                      android:textColor="@color/golden"
+                      android:layout_height="wrap_content" tools:ignore="UnusedAttribute"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <ProgressBar android:layout_width="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:visibility="gone"
+                 android:id="@+id/progresbbar"
+                 android:layout_height="wrap_content"/>
+
+</RelativeLayout>

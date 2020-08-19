@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.HomeActivity">
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="48dp"
+            app:cardBackgroundColor="@color/appcolor"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+        <ImageView
+                android:id="@+id/backbtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="8dp"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/ic_menu_black_24dp" tools:ignore="RtlHardcoded,VectorDrawableCompat"/>
+
+
+
+        <ImageView
+                android:id="@+id/titlletv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/tkl_logo"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="26dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
+
+    </LinearLayout>
+    <RelativeLayout
+            android:layout_width="40dp"
+            android:id="@+id/carlayout"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:layout_height="wrap_content" android:layout_marginRight="10dp">
+
+
+        <ImageView
+                android:id="@+id/cart"
+                android:layout_width="35dp"
+                android:layout_centerVertical="true"
+                android:layout_height="35dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="6dp"
+                app:srcCompat="@drawable/wallet19" tools:ignore="VectorDrawableCompat"/>
+        <RelativeLayout
+                android:layout_width="20dp"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
+                android:layout_height="20dp" android:layout_alignParentRight="true">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/_0"
+                    android:textSize="10sp"
+                    android:id="@+id/countcart"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/lovation"
+            android:background="#25016A"
+            android:layout_below="@id/toolbar"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:layout_width="26dp"
+                android:id="@+id/image"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_my_location_24"
+                android:layout_height="26dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp">
+
+        </ImageView>
+        <TextView
+                android:layout_width="wrap_content"
+                android:text="Location"
+                android:textColor="#ffff"
+                android:id="@+id/text_location"
+                android:layout_toRightOf="@id/image"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:textSize="14dp"
+                android:drawablePadding="9dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
+        </TextView>
+
+    </RelativeLayout>
+
+
+ >
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_below="@id/lovation"
+            android:layout_height="wrap_content">
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_below="@id/toolbar"
+                  android:layout_height="wrap_content">
+
+            <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/imageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:visibility="gone"
+                    app:sliderAnimationDuration="600"
+                    app:sliderAutoCycleDirection="back_and_forth"
+                    app:sliderAutoCycleEnabled="true"
+                    app:sliderCircularHandlerEnabled="true"
+                    app:sliderIndicatorAnimationDuration="600"
+                    app:sliderIndicatorGravity="center_horizontal|bottom"
+                    app:sliderIndicatorOrientation="horizontal"
+                    app:sliderIndicatorPadding="3dp"
+                    app:sliderIndicatorRadius="2dp"
+                    app:sliderIndicatorSelectedColor="#5A5A5A"
+                    app:sliderIndicatorUnselectedColor="#FFF"
+                    app:sliderScrollTimeInSec="1"
+                    app:sliderStartAutoCycle="true" />
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+              <ImageView
+                      android:layout_width="match_parent"
+                      android:background="@drawable/banner"
+                      android:layout_height="match_parent">
+
+              </ImageView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:id="@+id/recyclerview"
+                android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@+id/reviewlayout"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="8dp"
+                android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="vertical"
+
+                          android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="100dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ladies_part2"
+                        android:layout_gravity="center"
+                        android:layout_height="90dp"/>
+                <RatingBar
+                        android:layout_marginTop="28dp"
+                        android:id="@+id/ratingbar"
+                        android:layout_marginStart="6dp"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:rating="5"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp"
+                        android:isIndicator="true"
+                        android:max="5" />
+
+                <TextView
+                        android:layout_width="200dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text="You would like to have some demo content on your you could jus quickly create sample"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:layout_height="wrap_content">
+
+                </TextView>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+ <ProgressBar android:layout_width="wrap_content"
+              android:layout_centerInParent="true"
+              android:id="@+id/progressbar"
+              android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

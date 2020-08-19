@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.Top_ReviewActivity">
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="48dp"
+            app:cardBackgroundColor="@color/appcolor"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+            <ImageView
+                    android:id="@+id/backbtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_arrow_back_black_24dp" tools:ignore="RtlHardcoded,VectorDrawableCompat"/>
+
+
+
+            <TextView
+                    android:id="@+id/titlletv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textStyle="bold"
+                    android:text="Top Reviews"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="26dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"/>
+
+        </LinearLayout>
+        <ImageView android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:foregroundGravity="center"
+                android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_below="@id/toolbar"
+            android:layout_height="match_parent">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="8dp"
+                android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent"
+                    android:orientation="vertical"
+
+                    android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="100dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ladies_part2"
+                        android:layout_gravity="center"
+                        android:layout_height="90dp"/>
+                <RatingBar
+                        android:layout_marginTop="28dp"
+                        android:id="@+id/ratingbar"
+                        android:layout_marginStart="6dp"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:rating="5"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp"
+                        android:isIndicator="true"
+                        android:max="5" />
+
+                <TextView
+                        android:layout_width="200dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text="You would like to have some demo content on your you could jus quickly create sample"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:layout_height="wrap_content">
+
+                </TextView>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="8dp"
+                android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent"
+                    android:orientation="vertical"
+
+                    android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="100dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ladies_part2"
+                        android:layout_gravity="center"
+                        android:layout_height="90dp"/>
+                <RatingBar
+                        android:layout_marginTop="28dp"
+                        android:id="@+id/ratingbar"
+                        android:layout_marginStart="6dp"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:rating="5"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp"
+                        android:isIndicator="true"
+                        android:max="5" />
+
+                <TextView
+                        android:layout_width="200dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text="You would like to have some demo content on your you could jus quickly create sample"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:layout_height="wrap_content">
+
+                </TextView>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="8dp"
+                android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent"
+                    android:orientation="vertical"
+
+                    android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="100dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ladies_part2"
+                        android:layout_gravity="center"
+                        android:layout_height="90dp"/>
+                <RatingBar
+                        android:layout_marginTop="28dp"
+                        android:id="@+id/ratingbar"
+                        android:layout_marginStart="6dp"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:rating="5"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp"
+                        android:isIndicator="true"
+                        android:max="5" />
+
+                <TextView
+                        android:layout_width="200dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text="You would like to have some demo content on your you could jus quickly create sample"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:layout_height="wrap_content">
+
+                </TextView>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

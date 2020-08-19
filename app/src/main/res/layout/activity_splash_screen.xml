@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:background="@color/appcolor"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.SplashScreen">
+    <TextView android:layout_width="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:id="@+id/textview1"
+              android:layout_marginTop="200dp"
+              android:text="@string/WELCOME"
+              android:fontFamily="@font/maven_pro"
+              android:textSize="28sp"
+              android:textStyle="bold"
+              android:textColor="@color/golden"
+              android:layout_height="wrap_content"
+              tools:ignore="UnusedAttribute"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:id="@+id/textview2"
+              android:layout_below="@id/textview1"
+              android:layout_marginTop="5dp"
+              android:text="@string/TO"
+              android:textColor="@color/golden"
+              android:fontFamily="@font/maven_pro"
+              android:textSize="28sp"
+              android:textStyle="bold"
+              android:layout_height="wrap_content"
+              tools:ignore="UnusedAttribute"/>
+
+    <ImageView
+            android:layout_width="200sp"
+            android:layout_below="@id/textview2"
+            android:src="@drawable/tkl_logo"
+            android:layout_centerHorizontal="true"
+               android:layout_height="150sp"/>
+   <ImageView android:layout_width="match_parent"
+              android:background="@drawable/m"
+              android:layout_alignParentBottom="true"
+              android:layout_height="200dp"/>
+
+</RelativeLayout>
