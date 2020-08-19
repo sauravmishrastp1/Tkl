@@ -101,6 +101,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MyWallet_Activity.class);
                 startActivity(intent);
+                String h ="nkgn";
             }
         });
         reviewlayout.setOnClickListener(new View.OnClickListener() {
@@ -584,7 +585,6 @@ public void onRequestPermissionsResult(int requestCode, String permissions[], in
 public void onBackPressed() {
         this.finishAffinity();
         }
-
 
 private void getCityList()
         {
