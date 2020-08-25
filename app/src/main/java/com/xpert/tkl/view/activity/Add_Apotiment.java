@@ -25,7 +25,5 @@ public class Add_Apotiment extends AppCompatActivity {
             }
         });
     }
-    private void methdo(){ 
-        String heloo ="hello";
-    }
+    
 }
