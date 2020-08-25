@@ -21,7 +21,11 @@ public class Add_Apotiment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+                
             }
         });
+    }
+    private void methdo(){ 
+        String heloo ="hello";
     }
 }
