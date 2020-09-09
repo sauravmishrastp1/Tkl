@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.xpert.tkl">
+    package="com.xpert.tkl">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.Top_ReviewActivity"></activity>
+        android:allowBackup="true"
+        android:icon="@drawable/tkl_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/tkl_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".view.activity.Suscription_Plane_Activity"></activity>
+        <activity android:name=".view.activity.Pofile_Activity" />
+        <activity android:name=".view.activity.Wallter_Layout" />
+        <activity android:name=".view.activity.Top_ReviewActivity" />
         <activity android:name=".view.activity.Add_Apotiment" />
         <activity android:name=".view.activity.MyWallet_Activity" />
         <activity android:name=".view.activity.AllApotimentActivity" />
@@ -27,6 +31,8 @@
         <activity android:name=".view.activity.ProfileActivity" />
         <activity android:name=".view.activity.HomeActivity" />
         <activity android:name=".view.activity.SinupActivity" />
+        <activity android:name=".view.activity.Update_Profile_Activity" />
+        <activity android:name=".view.activity.Total_Lead_Activity" />
         <activity android:name=".view.activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,9 +42,9 @@
         </activity>
         <activity android:name=".view.activity.LoginActivity" />
         <activity
-                android:name=".view.activity.MainActivity"
-                android:label="@string/app_name"
-                android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".view.activity.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FAFAFC</color>
-    <color name="colorPrimaryDark">#FAFAFC</color>
+    <color name="colorPrimary">#ECEBEB</color>
+    <color name="colorPrimaryDark">#ECEBEB</color>
     <color name="colorAccent">#f2c037</color>
-    <color name="appcolor">#1d0056</color>
-    <color name="appcolordark">#1d0056</color>
+    <color name="appcolor">#31028E</color>
+    <color name="appcolordark">#31028E</color>
     <color name="golden">#D4AF37</color>
 
 
@@ -23,4 +23,6 @@
     <color name="transparent">#00000000</color>
     <color name="successGreen">#4BB543</color>
     <color name="RecyclerViewBackground">#d6d6d6</color>
+
+
 </resources>

@@ -8,7 +8,9 @@ public class StudentData {
     private String class_;
     private String subject;
     private String description;
-    private int image;
+    private String image;
+    private String city;
+    private String status;
 
     public String getId() {
         return id;
@@ -66,15 +68,31 @@ public class StudentData {
         this.description = description;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public StudentData(String id, String name, String address, String phone_no, String class_, String subject, String description, int image) {
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public StudentData(String id, String name, String address, String phone_no, String class_, String subject, String description, String image, String city, String status) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -83,5 +101,7 @@ public class StudentData {
         this.subject = subject;
         this.description = description;
         this.image = image;
+        this.city = city;
+        this.status = status;
     }
 }

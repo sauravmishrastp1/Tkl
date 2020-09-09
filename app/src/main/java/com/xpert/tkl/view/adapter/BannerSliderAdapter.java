@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -32,8 +34,9 @@ public class BannerSliderAdapter extends PagerAdapter {
 
         View view= LayoutInflater.from(container.getContext()).inflate(R.layout.banner_slider_layout,container,false);
         ImageView bannerImage=view.findViewById(R.id.banner_image);
+       // Toast.makeText(context, ""+bannerSliders.get(position).getImage(), Toast.LENGTH_SHORT).show();
         Picasso.with(context).load(bannerSliders.get(position).getImage()).fit().centerCrop()
-                .placeholder(R.drawable.tkl_logo)
+                .placeholder(R.drawable.addapotmin2)
                 .into(bannerImage);
         container.addView(view,0);
         return view;

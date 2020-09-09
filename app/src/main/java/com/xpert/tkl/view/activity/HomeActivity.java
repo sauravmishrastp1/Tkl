@@ -30,6 +30,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.faltenreich.skeletonlayout.Skeleton;
+import com.faltenreich.skeletonlayout.SkeletonLayoutUtils;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -42,9 +44,11 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+import com.xpert.tkl.Presenter.utils.VolleySingleton;
 import com.xpert.tkl.R;
 import com.xpert.tkl.constant.LocationAssets;
 import com.xpert.tkl.view.adapter.Apotiment_Adapter;
@@ -71,8 +75,8 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
     private GoogleApiClient googleApiClient;
     private final static int REQUEST_CHECK_SETTINGS_GPS = 0x1;
     private final static int REQUEST_ID_MULTIPLE_PERMISSIONS = 0x2;
-    Geocoder geocoder;
-    List<Address> addresses;
+    private Geocoder geocoder;
+    private List<Address> addresses;
     public static String address;
     private SliderView sliderView;
     private RecyclerView recyclerView;
@@ -84,24 +88,36 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
     private View wallet;
     private TextView loaction_txt;
     private  View reviewlayout;
+    private String wallet_momey;
+    private String user_id;
+    private  TextView walletblance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         sliderView = findViewById(R.id.imageSlider);
         recyclerView = findViewById(R.id.recyclerview);
+        walletblance = findViewById(R.id.walletamounttxt);
         progressBar = findViewById(R.id.progressbar);
         loaction_txt = findViewById(R.id.text_location);
         reviewlayout = findViewById(R.id.reviewlayout);
         sidemenu = findViewById(R.id.backbtn);
-        wallet  = findViewById(R.id.carlayout);
 
+
+        // or create a new SkeletonLayout from a given View
+
+        wallet  = findViewById(R.id.walletlayout);
+       //updatevallet();
+
+        getwalletblance();
         wallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MyWallet_Activity.class);
                 startActivity(intent);
-                String h ="nkgn";
+               // String h ="nkgn";
             }
         });
         reviewlayout.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +137,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
             finish();
         }
       sliderApi();
-        stdudentapi();
+        showStudentdata();
 
         setSideBar();
 
@@ -137,7 +153,11 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
                 onSideMenu();
             }
         });
+        user_id = SharedPrefManager.getInstance(getApplicationContext()).getUser().getId();
+       // Toast.makeText(this, ""+user_id, Toast.LENGTH_SHORT).show();
+      //  updatewallet();
     }
+
     public void onSideMenu() {
         menu.toggle();
     }
@@ -153,15 +173,71 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         menu.setMenu(R.layout.ly_frame_layout);
     }
+    private void getwalletblance(){
 
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        String url ="https://tklpvtltd.com/tkl/api/view-wallet?user_id="+ SharedPrefManager.getInstance(getApplicationContext()).getUser().getId();
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String status = jsonObject.getString("status");
+                    JSONArray jsonArray = jsonObject.getJSONArray("$data");
+                    if(status.equals("200")){
+                        for(int i=0;i<jsonArray.length();i++){
+                            JSONObject walletjson = jsonArray.getJSONObject(i);
+                            wallet_momey = walletjson.getString("money");
+
+                          walletblance.setText("₹"+wallet_momey);
+                        }
+
+
+
+                    }else {
+                        //  Toast.makeText(MyWallet_Activity.this, "Data is not submit", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }catch (Exception e){
+                   // Toast.makeText(HomeActivity.this, "somtihing wet wrong"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    // progressDialog.dismiss();
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+               // Toast.makeText(HomeActivity.this, "Server Error!!", Toast.LENGTH_SHORT).show();
+                //   progressDialog.dismiss();
+
+            }
+        });
+        queue.getCache().clear();
+
+        VolleySingleton.getInstance(getApplicationContext()).getRequestQueue().getCache().clear();
+
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+    }
 
     private void sliderApi(){
+        final KProgressHUD progressDialog = KProgressHUD.create(HomeActivity.this)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setLabel("Please wait")
+                .setMaxProgress(100)
+                .show();
+        progressDialog.setProgress(90);
 
-        progressBar.setVisibility(View.VISIBLE);
+      //  progressBar.setVisibility(View.VISIBLE);
         bannerSliderModelList=new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String url ="https://xpertwebtech.in/tkl/api/slider";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        String url ="https://tklpvtltd.com/tkl/api/slider";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, BaseUrl.SLIDER_URL,
 
                 new Response.Listener<String>() {
                     @SuppressLint("WrongConstant")
@@ -191,7 +267,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
                                     String id=jsonObject.getString("id");
 
 
-                                    bannerSliderModelList.add(new BannerSliderModel("https://xpertwebtech.in/tkl/upload/"+bannerimage,id));
+                                    bannerSliderModelList.add(new BannerSliderModel(BaseUrl.IMAGE_URL+bannerimage,id));
 
 
                                 }
@@ -205,19 +281,19 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
                                 sliderView.setIndicatorUnselectedColor(Color.WHITE);
                                 sliderView.setScrollTimeInSec(2); //set scroll delay in seconds :
                                 sliderView.startAutoCycle();
-                                progressBar.setVisibility(View.GONE);
+                                progressDialog.dismiss();
 
 
 
                             } else {
 
                                 Toast.makeText(getApplicationContext(), object.getString("msg"), Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
+                                progressDialog.dismiss();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             //  Toast.makeText(getContext(), "Somthing went wrong", Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                         }
                     }
                 },
@@ -230,32 +306,32 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
                         if (error instanceof TimeoutError) {
                             // Toast.makeText(getActivity(), "Timeout Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -7;
                         } else if (error instanceof NoConnectionError) {
                             Toast.makeText(getApplicationContext(), "No Connection Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -1;
                         } else if (error instanceof AuthFailureError) {
                             Toast.makeText(getApplicationContext(), "AuthFailure Error Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -6;
                         } else if (error instanceof ServerError) {
                             Toast.makeText(getApplicationContext(), "Server Error Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = 0;
                         } else if (error instanceof NetworkError) {
                             Toast.makeText(getApplicationContext(), "Network error Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -1;
                         } else if (error instanceof ParseError) {
                             Toast.makeText(getApplicationContext(), "Server rror Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -8;
                         }
                     }
@@ -281,28 +357,70 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
         queue.add(stringRequest);
 
     }
-    private void stdudentapi(){
-        appointmentModelArrayList.add(new StudentData("","Tushan","Greatre noida","","9th","Matths","",R.drawable.img11));
-        appointmentModelArrayList.add(new StudentData("","Goutam","noida","","10th","Science","Science",R.drawable.img22));
-        appointmentModelArrayList.add(new StudentData("","Saurav","delhi","","12th","Chemistry","Chemistry",R.drawable.img33));
-        appointmentModelArrayList.add(new StudentData("","Tushan","noida","","BSCE","Physic","Physic",R.drawable.img11));
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-        StudentDataAdapter gridProductAdapter = new StudentDataAdapter(appointmentModelArrayList, getApplicationContext());
-        recyclerView.setAdapter(gridProductAdapter);
-        gridProductAdapter.notifyDataSetChanged();
+//    private void stdudentapi(){
+//        appointmentModelArrayList.add(new StudentData("","Tushan","Greatre noida","","9th","Matths","",R.drawable.img11));
+//        appointmentModelArrayList.add(new StudentData("","Goutam","noida","","10th","Science","Science",R.drawable.img22));
+//        appointmentModelArrayList.add(new StudentData("","Saurav","delhi","","12th","Chemistry","Chemistry",R.drawable.img33));
+//        appointmentModelArrayList.add(new StudentData("","Tushan","noida","","BSCE","Physic","Physic",R.drawable.img11));
+//
+//
+//
+//    }
 
+    private void updatevallet(){
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        String url ="https://tklpvtltd.com/tkl/api/update-user-wallet?user_id="+SharedPrefManager.getInstance(getApplicationContext()).getUser().getId()+"&money=0";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
+                try {
+
+                    JSONObject object = new JSONObject(response);
+
+                    String status = object.getString("status");
+                    //JSONObject userJson = object.getJSONObject("wallet");
+                    if(status.equals("200")) {
+                        Toast.makeText(HomeActivity.this, "add wallet", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(HomeActivity.this, "dfghjk,", Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (Exception e){
+                    Toast.makeText(HomeActivity.this, "add wallet"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HomeActivity.this, "add wallet"+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.getCache().clear();
+
+        VolleySingleton.getInstance(getApplicationContext()).getRequestQueue().getCache().clear();
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
 
     }
-
-
     private void showStudentdata(){
-        progressBar.setVisibility(View.VISIBLE);
+        final KProgressHUD progressDialog = KProgressHUD.create(HomeActivity.this)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setLabel("Please wait")
+                .setMaxProgress(100)
+                .show();
+        progressDialog.setProgress(90);
+       // progressBar.setVisibility(View.VISIBLE);
         bannerSliderModelList=new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, BaseUrl.SHOW_STUDENT,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, BaseUrl.SHOW_STUDENT+SharedPrefManager.getInstance(getApplicationContext()).getUser().getId(),
+                //SharedPrefManager.getInstance(getApplicationContext()).getUser().getId(),
 
                 new Response.Listener<String>() {
                     @SuppressLint("WrongConstant")
@@ -315,7 +433,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
                             String status = object.getString("status");
 
 
-                            JSONArray bannerarray = object.getJSONArray("Student");
+                            JSONArray bannerarray = object.getJSONArray("Student_view");
 
 
 
@@ -335,8 +453,18 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
                                     String dis = jsonObject.getString("description");
                                     String phone = jsonObject.getString("phone_no");
                                     String subject = jsonObject.getString("subject");
+                                    String city = jsonObject.getString("city");
                                     String address = jsonObject.getString("address");
+                                    String status_view = jsonObject.getString("status");
+                                    appointmentModelArrayList.add(new StudentData(id,name,address,phone,class_,subject,dis,BaseUrl.IMAGE_URL+image,city,status_view));
 
+                                    LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                                    recyclerView.setLayoutManager(layoutManager);
+                                    layoutManager.setOrientation(RecyclerView.VERTICAL);
+                                    StudentDataAdapter gridProductAdapter = new StudentDataAdapter(appointmentModelArrayList, HomeActivity.this);
+                                    recyclerView.setAdapter(gridProductAdapter);
+                                    gridProductAdapter.notifyDataSetChanged();
+                                    progressDialog.dismiss();
 
                                 }
 
@@ -345,12 +473,12 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
                             } else {
 
                                 Toast.makeText(getApplicationContext(), object.getString("msg"), Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
+                                progressDialog.dismiss();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             //  Toast.makeText(getContext(), "Somthing went wrong", Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                         }
                     }
                 },
@@ -363,32 +491,32 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
                         if (error instanceof TimeoutError) {
                             // Toast.makeText(getActivity(), "Timeout Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -7;
                         } else if (error instanceof NoConnectionError) {
                             Toast.makeText(getApplicationContext(), "No Connection Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -1;
                         } else if (error instanceof AuthFailureError) {
                             Toast.makeText(getApplicationContext(), "AuthFailure Error Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -6;
                         } else if (error instanceof ServerError) {
                             Toast.makeText(getApplicationContext(), "Server Error Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = 0;
                         } else if (error instanceof NetworkError) {
                             Toast.makeText(getApplicationContext(), "Network error Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -1;
                         } else if (error instanceof ParseError) {
                             Toast.makeText(getApplicationContext(), "Server rror Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -8;
                         }
                     }
@@ -443,7 +571,12 @@ public void onLocationChanged(Location location) {
         //Or Do whatever you want with your location
         try {
         addresses = geocoder.getFromLocation(lat, lon, 1);
-        address = addresses.get(0).getLocality();
+       String  address = addresses.get(0).getAddressLine(0);
+       String area =addresses.get(0).getLocality();
+       String city = addresses.get(0).getAdminArea();
+       String contry= addresses.get(0).getCountryName();
+       String pincode = addresses.get(0).getPostalCode();
+
         loaction_txt.setText(address);
         // Constants.currentAddress = address;
        // Toast.makeText(this, "Your Location is locality: "+address, Toast.LENGTH_LONG).show();
@@ -472,7 +605,7 @@ public void onConnectionFailed(ConnectionResult connectionResult) {
         //You can display a message here
         }
 
-public void getMyLocation() {
+     public void getMyLocation() {
         if (googleApiClient != null) {
         if (googleApiClient.isConnected()) {
         int permissionLocation = ContextCompat.checkSelfPermission(HomeActivity.this,
@@ -496,7 +629,7 @@ LocationRequest locationRequest = new LocationRequest();
 
      @Override
  public void onResult(LocationSettingsResult result) {
-final Status status = result.getStatus();
+    final Status status = result.getStatus();
         switch (status.getStatusCode()) {
         case LocationSettingsStatusCodes.SUCCESS:
         // All location settings are satisfied.

@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.xpert.tkl.R;
 import com.xpert.tkl.api.BaseUrl;
+import com.xpert.tkl.constant.SharedPrefManager;
 import com.xpert.tkl.model.AppointmentModel;
 import com.xpert.tkl.model.StudentData;
 import com.xpert.tkl.view.adapter.Apotiment_Adapter;
@@ -56,33 +58,39 @@ public class AllApotimentActivity extends AppCompatActivity {
             }
         });
 
-        stdudentapi();
+        showStudentdata();
 
 
     }
-    private void stdudentapi(){
-        appointmentModelArrayList.add(new StudentData("","Tushan","+91-95655787","","","","",R.drawable.img11));
-        appointmentModelArrayList.add(new StudentData("","Goutam","+91-95655787","","","","",R.drawable.img22));
-        appointmentModelArrayList.add(new StudentData("","Saurav","+91-95655787","","","","",R.drawable.img33));
-        appointmentModelArrayList.add(new StudentData("","Tushan","+91-95655787","","","","",R.drawable.img11));
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-        Apotiment_Adapter gridProductAdapter = new Apotiment_Adapter(appointmentModelArrayList, getApplicationContext());
-        recyclerView.setAdapter(gridProductAdapter);
-        gridProductAdapter.notifyDataSetChanged();
-        progressBar.setVisibility(View.GONE);
-
-
-    }
+//    private void stdudentapi(){
+//        appointmentModelArrayList.add(new StudentData("","Tushan","+91-95655787","","","","",R.drawable .img11));
+//        appointmentModelArrayList.add(new StudentData("","Goutam","+91-95655787","","","","",R.drawable.img22));
+//        appointmentModelArrayList.add(new StudentData("","Saurav","+91-95655787","","","","",R.drawable.img33));
+//        appointmentModelArrayList.add(new StudentData("","Tushan","+91-95655787","","","","",R.drawable.img11));
+//
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+//        recyclerView.setLayoutManager(layoutManager);
+//        layoutManager.setOrientation(RecyclerView.VERTICAL);
+//        Apotiment_Adapter gridProductAdapter = new Apotiment_Adapter(appointmentModelArrayList, getApplicationContext());
+//        recyclerView.setAdapter(gridProductAdapter);
+//        gridProductAdapter.notifyDataSetChanged();
+//        progressBar.setVisibility(View.GONE);
+//
+//
+//    }
 
 
     private void showStudentdata(){
-        progressBar.setVisibility(View.VISIBLE);
+        final KProgressHUD progressDialog = KProgressHUD.create(AllApotimentActivity.this)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setLabel("Please wait")
+                .setMaxProgress(100)
+                .show();
+        progressDialog.setProgress(90);
         appointmentModelArrayList=new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, BaseUrl.SHOW_STUDENT,
+        String url  ="https://tklpvtltd.com/tkl/api/total-lead?user_id="+ SharedPrefManager.getInstance(getApplicationContext()).getUser().getId();
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, BaseUrl.SHOW_STUDENT+SharedPrefManager.getInstance(getApplicationContext()).getUser().getId(),
 
                 new Response.Listener<String>() {
                     @SuppressLint("WrongConstant")
@@ -95,7 +103,7 @@ public class AllApotimentActivity extends AppCompatActivity {
                             String status = object.getString("status");
 
 
-                            JSONArray bannerarray = object.getJSONArray("Student");
+                            JSONArray bannerarray = object.getJSONArray("Student_view");
 
 
 
@@ -116,8 +124,8 @@ public class AllApotimentActivity extends AppCompatActivity {
                                     String phone = jsonObject.getString("phone_no");
                                     String subject = jsonObject.getString("subject");
                                     String address = jsonObject.getString("address");
-
-                                 //   appointmentModelArrayList.add(new StudentData(id,name,address,phone,class_,subject,dis,"https://xpertwebtech.in/tkl/upload/"+image));
+                                    String view_status = jsonObject.getString("status");
+                                    appointmentModelArrayList.add(new StudentData(id,name,address,phone,class_,subject,dis,BaseUrl.IMAGE_URL+image," ",view_status));
 
 
                                 }
@@ -127,19 +135,19 @@ public class AllApotimentActivity extends AppCompatActivity {
                                 Apotiment_Adapter gridProductAdapter = new Apotiment_Adapter(appointmentModelArrayList, getApplicationContext());
                                 recyclerView.setAdapter(gridProductAdapter);
                                 gridProductAdapter.notifyDataSetChanged();
-                                progressBar.setVisibility(View.GONE);
+                                progressDialog.dismiss();
 
 
 
                             } else {
 
                                 Toast.makeText(getApplicationContext(), object.getString("msg"), Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
+                                progressDialog.dismiss();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             //  Toast.makeText(getContext(), "Somthing went wrong", Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                         }
                     }
                 },
@@ -152,32 +160,32 @@ public class AllApotimentActivity extends AppCompatActivity {
                         if (error instanceof TimeoutError) {
                             // Toast.makeText(getActivity(), "Timeout Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -7;
                         } else if (error instanceof NoConnectionError) {
                             Toast.makeText(getApplicationContext(), "No Connection Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -1;
                         } else if (error instanceof AuthFailureError) {
                             Toast.makeText(getApplicationContext(), "AuthFailure Error Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -6;
                         } else if (error instanceof ServerError) {
                             Toast.makeText(getApplicationContext(), "Server Error Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = 0;
                         } else if (error instanceof NetworkError) {
                             Toast.makeText(getApplicationContext(), "Network error Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -1;
                         } else if (error instanceof ParseError) {
                             Toast.makeText(getApplicationContext(), "Server rror Try Again", Toast.LENGTH_SHORT).show();
 
-                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             errorCode = -8;
                         }
                     }

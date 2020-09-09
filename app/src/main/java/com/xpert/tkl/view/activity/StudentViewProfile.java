@@ -35,26 +35,26 @@ public class StudentViewProfile extends AppCompatActivity {
         call_now_btn = findViewById(R.id.buttonedit);
         distxt = findViewById(R.id.dis_txt);
         backpress_ = findViewById(R.id.backbtn);
-//
-//        bundle = getIntent().getExtras();
-//        if(bundle!=null){
-//           name = bundle.getString("name");
-//           address = bundle.getString("address");
-//           phone = bundle.getString("phone");
-//           subject = bundle.getString("sunject");
-//           user_id = bundle.getString("id");
-//           classs = bundle.getString("class");
-//           img_url = bundle.getString("img");
-//           dis = bundle.getString("dis");
-//           distxt.setText(dis);
-//
-//            Picasso.with(getApplicationContext()).load(img_url).into(profileimage);
-//           nametxt.setText(name);
-//           addresstxt.setText(address);
-//           phonenotxt.setText(phone);
-//           subjecttxt.setText(subject);
-//           classstxt.setText("Class-"+classs);
-   //     }
+
+        bundle = getIntent().getExtras();
+        if(bundle!=null){
+           name = bundle.getString("name");
+           address = bundle.getString("address");
+           phone = bundle.getString("phone");
+           subject = bundle.getString("sunject");
+           user_id = bundle.getString("id");
+           classs = bundle.getString("class");
+           img_url = bundle.getString("img");
+           dis = bundle.getString("dis");
+           distxt.setText(dis);
+
+            Picasso.with(getApplicationContext()).load(img_url).into(profileimage);
+           nametxt.setText(name);
+           addresstxt.setText(address);
+           phonenotxt.setText(phone);
+           subjecttxt.setText(subject);
+           classstxt.setText("Class-"+classs);
+        }
 
         call_now_btn.setOnClickListener(new View.OnClickListener() {
             @Override

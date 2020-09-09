@@ -73,13 +73,7 @@
             android:layout_marginTop="20dp"
             android:layout_height="130sp"/>
 
-    <include
-            android:id="@+id/cleanderlayoutt"
-            android:layout_centerHorizontal="true"
-            layout="@layout/profilelayout"
-            android:layout_below="@id/profile_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
     </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

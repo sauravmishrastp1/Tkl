@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.Suscription_Plane_Activity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:id="@+id/toolbar"
+        android:layout_height="48dp"
+        app:cardBackgroundColor="@color/appcolor"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/backbtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="8dp"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/ic_arrow_back_black_24dp" tools:ignore="RtlHardcoded,VectorDrawableCompat"/>
+
+
+
+            <TextView
+                android:id="@+id/titlletv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:fontFamily="@font/maven_pro"
+                android:textStyle="bold"
+                android:text="Subscription Plan"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="26dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"/>
+
+        </LinearLayout>
+        <ImageView android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:foregroundGravity="center"
+            android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/recyclerview_"
+        android:layout_below="@id/toolbar"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_below="@id/toolbar"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            app:cardBackgroundColor="#C0C0C0"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp"
+            android:layout_below="@id/toolbar"
+            android:layout_height="wrap_content">
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                   android:layout_alignParentEnd="true"
+                   android:layout_centerVertical="true"
+                   android:layout_marginEnd="20dp"
+                   android:layout_height="wrap_content"/>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:id="@+id/textview_headig"
+                   android:text="Silver"
+                   android:layout_centerHorizontal="true"
+                   android:fontFamily="@font/maven_pro_medium"
+                   android:textColor="#ffff"
+                   android:textSize="18dp"
+                   android:textStyle="bold"
+                   android:layout_marginTop="20dp"
+                   android:layout_height="wrap_content">
+
+               </TextView>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:id="@+id/dis"
+                   android:layout_below="@id/textview_headig"
+                   android:text="3 Month 4000+GST"
+                   android:layout_centerHorizontal="true"
+                   android:fontFamily="@font/maven_pro_medium"
+                   android:textColor="@color/white"
+                   android:textSize="15dp"
+                   android:layout_marginBottom="20dp"
+                   android:textStyle="bold"
+                   android:layout_marginTop="20dp"
+                   android:layout_height="wrap_content">
+
+               </TextView>
+
+           </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            app:cardBackgroundColor="	#D4AF37"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp"
+            android:layout_below="@id/toolbar"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/textview_headig"
+                    android:text="Gold"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/maven_pro_medium"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/dis"
+                    android:layout_below="@id/textview_headig"
+                    android:text="6 Month 8000+GST"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/maven_pro_medium"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            app:cardBackgroundColor="#b9f2ff"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp"
+            android:layout_below="@id/toolbar"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="wrap_content"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/textview_headig"
+                    android:text="Diamond"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/maven_pro_medium"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/dis"
+                    android:layout_below="@id/textview_headig"
+                    android:text="9 Month 12000+GST"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/maven_pro_medium"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            app:cardBackgroundColor="#E5E4E2"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp"
+            android:layout_below="@id/toolbar"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/textview_headig"
+                    android:text="Platinum"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/maven_pro_medium"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/dis"
+                    android:layout_below="@id/textview_headig"
+                    android:text="1 year 15000+GST"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/maven_pro_medium"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:id="@+id/visbilitygone"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+    </ProgressBar>
+
+</RelativeLayout>

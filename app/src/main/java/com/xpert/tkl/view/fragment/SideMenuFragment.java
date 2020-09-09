@@ -22,7 +22,8 @@ public class SideMenuFragment extends Fragment {
 
     private View rootView;
     private View shareearnn,myvalletview,addvacation,profileview,contactuslayout,
-            offrerlayout,helpview,addplaneview,viewbilllayout,logout,mycleanderview,logivueww,deleveryboylayout,orderhistorylayout;
+            offrerlayout,helpview,addplaneview,viewbilllayout,subscription_plane_layout,
+            logout,mycleanderview,logivueww,deleveryboylayout,orderhistorylayout,total_lead_layout;
 
         private TextView nametxt,emialtxt;
 
@@ -48,19 +49,34 @@ public class SideMenuFragment extends Fragment {
         helpview = rootView.findViewById(R.id.helpview);
         orderhistorylayout=rootView.findViewById(R.id.sharearn);
         logivueww = rootView.findViewById(R.id.LOGIN);
-        viewbilllayout = rootView.findViewById(R.id.viewbill);
+        subscription_plane_layout = rootView.findViewById(R.id.subscription_plane_layout);
         logout = rootView.findViewById(R.id.logoutview);
         profileview = rootView.findViewById(R.id.profileviewlayout);
-        mycleanderview = rootView.findViewById(R.id.cleanderview);
+        mycleanderview = rootView.findViewById(R.id.taotal_lead);
         contactuslayout = rootView.findViewById(R.id.contactuss);
 
+         total_lead_layout = rootView.findViewById(R.id.taotal_lead);
         emialtxt = rootView.findViewById(R.id.user_email);
         nametxt = rootView.findViewById(R.id.name_user);
+        mycleanderview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Total_Lead_Activity.class);
+                startActivity(intent);
+            }
+        });
+        subscription_plane_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Suscription_Plane_Activity.class);
+                startActivity(intent);
+            }
+        });
 
-//        String email = SharedPrefManager.getInstance(getContext()).getUser().getPhone();
-//        String name = SharedPrefManager.getInstance(getContext()).getUser().getName();
-//        nametxt.setText(name);
-//        emialtxt.setText(email);
+        String email = SharedPrefManager.getInstance(getContext()).getUser().getPhone();
+        String name = SharedPrefManager.getInstance(getContext()).getUser().getName();
+        nametxt.setText(name);
+       emialtxt.setText(email);
 //        if(email.equals("null")){
 //            profileview.setVisibility(View.GONE);
 //            logout.setVisibility(View.GONE);
@@ -70,10 +86,18 @@ public class SideMenuFragment extends Fragment {
         orderhistorylayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AllApotimentActivity.class);
+                startActivity(intent);
+            }
+        });
+        orderhistorylayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent intent = new Intent(getContext(), SupporDetailtActivity.class);
                 startActivity(intent);
             }
         });
+
 //        contactuslayout.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -175,7 +199,7 @@ public class SideMenuFragment extends Fragment {
         profileview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ProfileActivity.class);
+                Intent intent = new Intent(getContext(), Pofile_Activity.class);
                 startActivity(intent);
             }
         });

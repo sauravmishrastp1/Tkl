@@ -37,19 +37,20 @@ public class Apotiment_Adapter extends RecyclerView.Adapter<Apotiment_Adapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         String s_namme = studentData.get(position).getName();
         String s_class = studentData.get(position).getClass_();
-        String s_address = studentData.get(position).getAddress();
+        String s_address = studentData.get(position).getCity();
         String s_subject = studentData.get(position).getSubject();
-        int img = studentData.get(position).getImage();
+        String img = studentData.get(position).getImage();
         holder.student_name.setText(s_namme);
         holder.studen_sjubject.setVisibility(View.GONE);
         holder.studen_class.setVisibility(View.GONE);
-        holder.student_address.setText(s_address);
-        holder.student_img.setImageResource(img);
-      //  Picasso.with(context).load(img).into(holder.student_img);
+        holder.student_address.setText("New Delhi");
+        //holder.student_img.setImageResource(img);
+       Picasso.with(context).load(img).placeholder(R.drawable.img22).into(holder.student_img);
         holder.profileview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, StudentViewProfile.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("name",studentData.get(position).getName());
                 intent.putExtra("address",studentData.get(position).getAddress());
                 intent.putExtra("phone",studentData.get(position).getPhone_no());

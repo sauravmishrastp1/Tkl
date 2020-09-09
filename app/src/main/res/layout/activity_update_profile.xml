@@ -26,7 +26,8 @@
                     android:layout_height="30dp"
                     android:layout_marginLeft="8dp"
                     android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/ic_arrow_back_black_24dp" tools:ignore="RtlHardcoded,VectorDrawableCompat"/>
+                    app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+                    tools:ignore="RtlHardcoded,VectorDrawableCompat"/>
 
 
 
@@ -38,7 +39,7 @@
                     android:textSize="18dp"
                     android:fontFamily="@font/quicksand_bold"
                     android:textStyle="bold"
-                    android:text="Add Appointment"
+                    android:text="Update Profile"
                     android:singleLine="true"
                     android:ellipsize="end"
                     android:layout_marginStart="16dp"
@@ -109,13 +110,13 @@
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
                 android:drawablePadding="8dp"
-                android:hint="Whatsapp Number"
-                android:inputType="number"
+                android:hint="Email"
+                android:inputType="text"
                 android:textColor="@color/Black"
                 android:textColorHint="#9C9898"
                 android:textSize="12sp" />
         <EditText
-                android:id="@+id/SubjectEt"
+                android:id="@+id/city_et"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -126,7 +127,7 @@
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
                 android:drawablePadding="8dp"
-                android:hint="Subject Intrested"
+                android:hint="city"
                 android:inputType="text"
                 android:textColor="@color/Black"
                 android:textColorHint="#9C9898"
@@ -150,20 +151,38 @@
                 android:textColorHint="#9C9898"
                 android:textSize="12sp" />
         <EditText
-                android:id="@+id/amountEt"
+                android:id="@+id/dob_et"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_rectangle_background"
                 android:padding="10dp"
                 android:elevation="1dp"
-                android:drawableStart="@drawable/ic_baseline_attach_money_24"
                 android:fontFamily="@font/quicksand_bold"
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
                 android:drawablePadding="8dp"
-                android:hint="Amount Done"
-                android:inputType="number"
+                android:hint="DOB"
+                android:inputType="date"
+                android:textColor="@color/Black"
+                android:textColorHint="#9C9898"
+                android:textSize="12sp" />
+
+
+        <EditText
+                android:id="@+id/class_txt"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_rectangle_background"
+                android:padding="10dp"
+                android:elevation="1dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:drawablePadding="8dp"
+                android:hint="Class"
+                android:inputType="date"
                 android:textColor="@color/Black"
                 android:textColorHint="#9C9898"
                 android:textSize="12sp" />
@@ -175,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/sbumitnow"
                 android:background="@drawable/button_background"
-                android:text="Submit Now"
+                android:text="Update"
                 android:layout_below="@+id/layout"
                 android:clickable="true"
                 android:layout_marginStart="14dp"

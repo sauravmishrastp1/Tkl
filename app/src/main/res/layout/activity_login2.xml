@@ -7,12 +7,12 @@
         android:layout_height="match_parent"
         tools:context=".view.activity.LoginActivity">
        <ImageView
-               android:layout_width="200sp"
+               android:layout_width="300sp"
                android:id="@+id/img_logo"
                android:layout_centerHorizontal="true"
-               android:layout_marginTop="80sp"
+               android:layout_marginTop="150sp"
                android:src="@drawable/tkl_logo"
-                 android:layout_height="100dp"/>
+                 android:layout_height="120dp"/>
 
        <LinearLayout
                android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                              android:layout_width="match_parent"
                              android:hint="User name"
                              android:id="@+id/username_et"
-                             android:textColorHint="#ffff"
+                             android:textColorHint="#ECEBEB"
                              android:textSize="15dp"
                              android:layout_marginEnd="30sp"
                              android:layout_marginStart="30sp"
@@ -46,7 +46,7 @@
                              android:textSize="15dp"
                              android:layout_marginTop="15dp"
                              android:layout_marginEnd="30sp"
-                             android:textColorHint="@color/white"
+                             android:textColorHint="#ECEBEB"
                              android:drawableStart="@drawable/password8"
                              android:drawablePadding="9sp"
                              android:fontFamily="@font/quicksand_bold"
@@ -59,7 +59,7 @@
               <TextView android:layout_width="wrap_content"
                         android:text="Forget Password?"
                         android:layout_gravity="center"
-                        android:textColor="@color/white"
+                        android:textColor="#ECEBEB"
                         android:fontFamily="@font/quicksand_bold"
                         android:layout_marginTop="10dp"
                         android:layout_height="wrap_content"/>
