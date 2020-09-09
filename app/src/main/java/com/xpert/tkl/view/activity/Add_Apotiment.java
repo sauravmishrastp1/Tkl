@@ -21,7 +21,9 @@ public class Add_Apotiment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+                
             }
         });
     }
+    
 }
