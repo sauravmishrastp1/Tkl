@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:background="#F0EFEF"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.StudentViewProfile">
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="48dp"
+            app:cardBackgroundColor="@color/appcolor"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+            <ImageView
+                    android:id="@+id/backbtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_arrow_back_black_24dp" tools:ignore="RtlHardcoded,VectorDrawableCompat"/>
+
+
+
+            <TextView
+                    android:id="@+id/titlletv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/maven_pro"
+                    android:textStyle="bold"
+                    android:text="View"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="26dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"/>
+
+        </LinearLayout>
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_gravity="end"
+                   android:foregroundGravity="center"
+                   android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_below="@id/toolbar"
+            app:cardBackgroundColor="#F0EFEF"
+            android:layout_height="200dp">
+        <ImageView android:layout_width="match_parent"
+                   android:id="@+id/profile_imag"
+                   android:background="@drawable/ladies"
+                   android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+
+        <include
+                android:id="@+id/cleanderlayoutt"
+                layout="@layout/studentprofile"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="30sp"
+                android:layout_marginEnd="30sp"
+                android:layout_marginTop="150dp"
+                android:layout_below="@id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+</RelativeLayout>

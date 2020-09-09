@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/custom_toast_layout"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    app:cardBackgroundColor="#F3F3F3"
+    android:layout_margin="4dp"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    app:cardCornerRadius="14dp"
+    android:paddingRight="10dp"
+    android:background="@color/transparent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+
+        <ImageView android:layout_width="70dp"
+            android:id="@+id/imageview"
+            android:src="@drawable/emptywallet"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="10dp" />
+        <TextView android:id="@+id/txtvw"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/imageview"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#7A7979"
+            android:layout_centerHorizontal="true"
+            android:text="Oops!! You have no subscription"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            android:textSize="15dp" />
+        <TextView android:id="@+id/txtvw2"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/txtvw"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#7A7979"
+            android:layout_centerHorizontal="true"
+            android:text="Please recharge your wallet"
+            android:visibility="gone"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            android:textSize="15dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/add_money_wallet_"
+            android:layout_below="@id/txtvw"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="Add"
+            android:layout_marginBottom="10dp"
+            android:textSize="12dp"
+            android:textColor="#fff"
+            android:fontFamily="@font/maven_pro_medium"
+            android:background="@drawable/add_wallet_background"
+            android:layout_height="30dp">
+
+        </Button>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
